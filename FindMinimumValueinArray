@@ -1,0 +1,16 @@
+class CheckMinimum {
+
+  public static int findMinimum(int[] arr) {
+    // Write your code here
+     int maxValue =Integer.MAX_VALUE;
+//9,2,3,6
+    for (int i=0;i<arr.length;i++)
+    {
+      if (arr[i]<maxValue)
+      {
+        maxValue = arr[i];
+      }
+    }
+    return maxValue;        
+  }
+}
