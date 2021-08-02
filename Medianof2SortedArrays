@@ -1,0 +1,46 @@
+class Median {
+ public static double getMedian(int array1[], int array2[]) {
+  // Write your code here
+  int[] finalArr = new int[array1.length+array2.length];
+
+ int i=0;
+ int j=0;int k=0;
+
+  while (i<array1.length && j<array2.length){
+      if (array1[i]<array2[j]){
+          finalArr[k]=array1[i];
+          i++;
+      }
+      else {
+          finalArr[k]=array2[j];
+          j++;
+      }
+      k++;
+  }
+  while (i<array1.length)
+  {
+      finalArr[k]=array1[i];
+      i++;
+      k++;
+      
+  }
+  while (j<array2.length)
+  {
+      finalArr[k]=array2[j];
+      j++;
+      k++;
+      
+  }
+  if (finalArr.length%2==1)
+  {
+      return finalArr[finalArr.length/2];
+  }
+  
+  double midFirst = finalArr[finalArr.length/2];
+  double midSecond= finalArr[(finalArr.length/2) -1];
+  
+   return (midFirst+midSecond)/2;
+
+
+ }
+}
