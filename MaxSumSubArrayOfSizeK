@@ -1,0 +1,25 @@
+class MaxSumSubArrayOfSizeK {
+  public static int findMaxSumSubArray(int k, int[] arr) {
+    // TODO: Write your code here
+    int sum=0;
+    
+    for (int i=0;i<k;i++)
+    {
+       sum+=arr[i];
+       
+    }
+  int globalSum =sum;
+  int startpos=0;
+  for (int j=k;j<arr.length;j++)
+  {
+    sum = sum +arr[j]-arr[startpos];
+    startpos++;
+    if (sum>globalSum){
+      globalSum=sum;
+    }
+
+  }
+  return globalSum;
+
+  }
+}
