@@ -1,0 +1,54 @@
+class SortedArraySquares {
+
+  public static int[] makeSquares(int[] arr) {
+    int[] squares = new int[arr.length];
+    // TODO: Write your code here
+    int deflectionpoint =0;
+
+    for (int i=0;i<arr.length;i++)
+    {
+      if (arr[i]>0||arr[i]==0)
+      {
+        deflectionpoint=i;
+        break;
+      }
+    }
+    int i=0;
+    
+    int start= deflectionpoint-1;
+    int end = deflectionpoint;
+    while (start>=0 && end <arr.length && i<arr.length)
+    {
+    if ((arr[start] * arr[start])< (arr[end]*arr[end]))
+    {
+       squares[i]= arr[start] * arr[start];
+       start--;
+    }
+    else {
+      squares[i]= arr[end] * arr[end];
+      end++;
+    
+    }
+    i++;
+    }
+
+    while (start>=0)
+    {
+      squares[i]= arr[start] * arr[start];
+      start--;
+      i++;
+    }
+
+    while (end<arr.length)
+    {
+      squares[i]= arr[end] * arr[end];
+      end++;
+      i++;
+    }
+
+  
+    return squares;
+
+    
+  }
+}
