@@ -1,0 +1,68 @@
+
+class ListNode {
+  int value = 0;
+  ListNode next;
+
+  ListNode(int value) {
+    this.value = value;
+  }
+}
+
+//
+class MiddleOfLinkedList {
+
+  public static ListNode findMiddleDoubleIteration(ListNode head) {
+    // TODO: Write your code here
+
+    //find the total length
+    int i=0;
+    
+    ListNode startptr= head;
+
+    while (startptr!=null){
+      i++;
+      startptr= startptr.next;
+    }
+    int middlelength = i/2;
+    int j =0;
+
+    while (j<middlelength){
+      head = head.next;
+      j++;
+    }
+
+    return head;
+  }
+  
+  public static ListNode findMiddle(ListNode head) {
+    // TODO: Write your code here
+
+    //find the total length
+    ListNode slowptr =head;
+    ListNode fastptr = head;
+     
+    while (fastptr!=null && fastptr.next!=null)
+    {
+      fastptr = fastptr.next.next;
+      slowptr = slowptr.next;
+    }
+    return slowptr;
+
+  }
+  
+
+  public static void main(String[] args) {
+    ListNode head = new ListNode(1);
+    head.next = new ListNode(2);
+    head.next.next = new ListNode(3);
+    head.next.next.next = new ListNode(4);
+    head.next.next.next.next = new ListNode(5);
+    System.out.println("Middle Node: " + MiddleOfLinkedList.findMiddle(head).value);
+
+    head.next.next.next.next.next = new ListNode(6);
+    System.out.println("Middle Node: " + MiddleOfLinkedList.findMiddle(head).value);
+
+    head.next.next.next.next.next.next = new ListNode(7);
+    System.out.println("Middle Node: " + MiddleOfLinkedList.findMiddle(head).value);
+  }
+}
