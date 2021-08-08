@@ -1,0 +1,12 @@
+public class Solution {
+    public int maxp3(int[] A) {
+        if (A.length<3) return -1;
+        
+        Arrays.sort(A);
+        int  productA = A[0]*A[1];
+        int productB = A[A.length-1]*A[A.length-2];
+        return Math.max(productA*A[A.length-1],productB*A[A.length-3]);
+        
+        
+    }
+}
