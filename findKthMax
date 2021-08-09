@@ -1,0 +1,30 @@
+lass CheckKthMax {
+
+	public static int findKthMax(Node root, int k) {
+
+	
+
+		// we will travese the tree and put the values / data in an array list
+
+		BSTTraversal(root);
+		int arrayListSize = arraylist.size();
+        int traversal = arrayListSize -k;
+       
+		return arraylist.get(traversal) ;
+
+
+	}
+
+	public static ArrayList<Integer> arraylist = new ArrayList<Integer>();
+
+    public static void BSTTraversal(Node root) {
+
+		// Write - Your - Code
+		if (root == null)
+		return;
+		BSTTraversal(root.getLeftChild());
+		arraylist.add(root.getData());
+		BSTTraversal(root.getRightChild());
+
+	}
+}
