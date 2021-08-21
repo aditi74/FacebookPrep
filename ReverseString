@@ -1,0 +1,29 @@
+class Reverse
+{
+    // Complete the function
+    // str: input string
+    public static String reverseWord(String str)
+    {
+ int start = 0;
+  int end = str.length()-1;
+  if (str.length()==0)
+  return str;
+  
+  char[] tempArray = str.toCharArray();
+  
+  while(start<end)
+  {
+      char A = tempArray[start];
+      tempArray[start] = tempArray[end];
+      tempArray[end]= A;
+      start++;
+      end--;
+  }    
+  String stri= "";
+  for (int i=0;i<tempArray.length;i++)
+  {
+      stri+=tempArray[i];
+  }
+     return  stri;  
+    }
+}
