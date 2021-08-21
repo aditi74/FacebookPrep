@@ -1,0 +1,45 @@
+/*package whatever //do not write package name here */
+
+import java.io.*;
+import java.util.*;
+
+class GFG {
+	public static void main (String[] args) {
+		System.out.println("GfG!");
+		int[] arr = new int[3];
+		arr[0]=1;
+		arr[1]=2;
+		arr[2]=3;
+		printRecursion(arr);
+	}
+	
+	public static void printRecursion(int[] arr){
+	    Integer[] subset= new Integer[arr.length];
+	    recursiveSubset(arr,subset,0);
+	    
+	    
+	    
+	}
+	public static void recursiveSubset(int[] arr,Integer[] subset, int i)
+	{
+	  if (i == arr.length){
+	      printsubset(subset);
+	  }   
+	  
+	  else{
+	      subset[i]=null;
+	      recursiveSubset(arr,subset,i+1);
+	      subset[i]=arr[i];
+	      recursiveSubset(arr,subset,i+1);
+	  }
+	}
+	
+	public static void printsubset(Integer[] arr)
+	{
+	   
+	    System.out.println(Arrays.toString(arr));
+	    
+	}
+	    
+	
+}
