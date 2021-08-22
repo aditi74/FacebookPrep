@@ -1,0 +1,35 @@
+import java.io.IOException;
+import java.util.*;
+import java.util.stream.Collectors;
+class Solution {
+    public static List<List<Node>> zigZagLevelOrderTraversal(Node root) {
+        // WRITE YOUR BRILLIANT CODE HERE
+        List<List<Node>> myList = new ArrayList<>();
+         Queue<Node> queue = new LinkedList<>();
+       queue.add(root);
+       boolean flag =true;
+
+       while (!queue.isEmpty()){
+           int levelSize= queue.size();
+           ArrayList<Node> list = new ArrayList<>();
+           for (int i=0;i<levelSize;i++){
+               Node node = queue.remove();
+               list.add(node);
+               
+                if (node.left!=null){
+                queue.add(node.left);
+            }
+            if (node.right!=null){
+                queue.add(node.right);
+            }
+           
+           }
+          if (flag==false){
+              Collections.reverse(list);
+          }
+         myList.add(list);
+         flag=!flag;
+       }
+       return myList;
+    }
+}
