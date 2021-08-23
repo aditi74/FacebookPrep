@@ -1,0 +1,60 @@
+import java.io.IOException;
+import java.util.*;
+import java.util.stream.Collectors;
+
+class Solution {
+
+  public static List<Node> getDistanceKNodes(Node root, Node target, int k) {
+        // WRITE YOUR BRILLIANT CODE HERE
+        List<Node> list = new ArrayList<>();
+        int targetlevel = targetNodeLevel(root,target);
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        int level =-1;
+
+        while (!queue.isEmpty()){
+           level++;
+           int queueSize= queue.size();
+           
+           for (int i=0;i<queueSize;i++){
+             Node node = queue.remove();
+             if (Math.abs(targetlevel-level)==k){
+               list.add(node);
+             }
+             if (node.left!=null)
+                     queue.add(node.left); 
+            if (node.right!=null)
+                  queue.add(node.right); 
+
+           }
+
+        }
+
+        return list;
+  }
+
+  public static int targetNodeLevel(Node root, Node target){
+        int level =-1;
+
+         Queue<Node> queue = new LinkedList<>();
+         queue.add(root);
+         while (!queue.isEmpty())
+         {
+             int sizelevel = queue.size();
+             level++;
+             for (int i=0;i<sizelevel;i++)
+             {  
+                 Node node = queue.remove();
+                if (node == target)
+                     return level;
+                if (node.left!=null)
+                     queue.add(node.left); 
+                if (node.right!=null)
+                   queue.add(node.right); 
+
+             }
+         }
+         return -1;
+
+  }
+}
