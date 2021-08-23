@@ -1,0 +1,25 @@
+  import java.util.Arrays;
+  import java.util.Iterator;
+  import java.util.Scanner;
+
+  class Solution {
+     public static Node lca(Node root, Node node1, Node node2) {
+          // WRITE YOUR BRILLIANT CODE HERE
+          if (root==null)
+          return null;
+          if (root == node1 || root == node2)
+          return root;
+
+          Node leftNode = lca(root.left,node1, node2);
+          Node rightNode = lca(root.right,node1, node2);
+          
+          if (leftNode!=null && rightNode!=null)
+          return root;
+     
+         if (leftNode ==null && rightNode ==null)
+         return null;
+
+         return leftNode!=null? leftNode:rightNode;
+
+      }
+  }
